@@ -1,6 +1,8 @@
 package br.com.matheus.loja.testes;
 
+import br.com.matheus.loja.dao.ProdutoDao;
 import br.com.matheus.loja.modelo.Produto;
+import br.com.matheus.loja.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,12 +16,11 @@ public class CadastroDeProduto {
         celular.setDescricao("Celular muito legal");
         celular.setPreco(new BigDecimal("800"));
 
-        EntityManagerFactory factory = Persistence.
-                createEntityManagerFactory("loja");
-        EntityManager em = factory.createEntityManager();
+        EntityManager em = JPAUtil.getEntityManager();
+        ProdutoDao produtoDAO = new ProdutoDao(em);
 
         em.getTransaction().begin();
-        em.persist(celular);
+        produtoDAO.cadastrar(celular);
         em.getTransaction().commit();
         em.close();
     }
