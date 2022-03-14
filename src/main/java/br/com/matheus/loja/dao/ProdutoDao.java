@@ -1,6 +1,5 @@
 package br.com.matheus.loja.dao;
 
-import br.com.matheus.loja.modelo.Categoria;
 import br.com.matheus.loja.modelo.Produto;
 
 import javax.persistence.EntityManager;

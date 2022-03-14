@@ -13,6 +13,11 @@ import java.math.BigDecimal;
 public class PerformanceConsultas {
     public static void main(String[] args) {
         popularBancoDeDados();
+        EntityManager em = JPAUtil.getEntityManager();
+
+        Pedido pedido = em.find(Pedido.class, 1L);
+        System.out.println(pedido.getItens().size());
+
     }
 
     private static void popularBancoDeDados() {
