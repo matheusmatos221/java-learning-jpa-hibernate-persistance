@@ -3,6 +3,7 @@ package br.com.matheus.loja.modelo;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "pedidos")
@@ -15,6 +16,9 @@ public class Pedido {
     private LocalDate date = LocalDate.now();
     @ManyToOne
     private Cliente cliente;
+
+    @OneToMany
+    private List<ItemPedido> itens;
 
     public Pedido(){
     }
