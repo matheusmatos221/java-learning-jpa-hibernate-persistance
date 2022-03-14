@@ -8,9 +8,24 @@ import br.com.matheus.loja.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class CadastroDeProduto {
     public static void main(String[] args) {
+        cadastrarProduto();
+
+        EntityManager em = JPAUtil.getEntityManager();
+        ProdutoDao produtoDao = new ProdutoDao(em);
+
+        Produto p = produtoDao.buscarPorId(1L);
+        System.out.println(p.getPreco());
+
+        List<Produto> todos = produtoDao.buscarTodos();
+        todos.forEach(p2 -> System.out.println(p.getNome()));
+
+    }
+
+    private static void cadastrarProduto() {
         Categoria celulares = new Categoria("CELULAR");
         Produto celular = new Produto("Xiaomi RedMi", "Celular muito legal", new BigDecimal("800"), celulares);
 
