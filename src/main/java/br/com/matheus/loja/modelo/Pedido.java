@@ -15,12 +15,12 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "valor_total")
     private BigDecimal valorTotal;
     private LocalDate date = LocalDate.now();
     @ManyToOne
     private Cliente cliente;
-
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens = new ArrayList<ItemPedido>();
 
     public Pedido(){
