@@ -6,6 +6,7 @@ import br.com.matheus.loja.dao.PedidoDao;
 import br.com.matheus.loja.dao.ProdutoDao;
 import br.com.matheus.loja.modelo.*;
 import br.com.matheus.loja.util.JPAUtil;
+import br.com.matheus.loja.vo.RelatorioDeVendasVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -42,12 +43,15 @@ public class CadastroDePedido {
         BigDecimal totalVendido = pedidoDao.valorTotalVendido();
         System.out.println("VALOR TOTAL: "+totalVendido);
 
-        List<Object[]> relatorio = pedidoDao.relatorioDeVendas();
-        for(Object[] obj : relatorio){
-            System.out.println(obj[0]);
-            System.out.println(obj[1]);
-            System.out.println(obj[2]);
-        }
+        List<RelatorioDeVendasVo> relatorio = pedidoDao.relatorioDeVendasVo();
+        relatorio.forEach(System.out::println);
+
+//        List<Object[]> relatorio = pedidoDao.relatorioDeVendas();
+//        for(Object[] obj : relatorio){
+//            System.out.println(obj[0]);
+//            System.out.println(obj[1]);
+//            System.out.println(obj[2]);
+//        }
         // Fim transação com BD
         em.close();
     }

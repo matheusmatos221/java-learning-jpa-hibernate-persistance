@@ -2,6 +2,7 @@ package br.com.matheus.loja.dao;
 
 import br.com.matheus.loja.modelo.Pedido;
 import br.com.matheus.loja.modelo.Produto;
+import br.com.matheus.loja.vo.RelatorioDeVendasVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -33,6 +34,20 @@ public class PedidoDao {
                 "GROUP BY produto.nome " +
                 "ORDER BY item.quantidade DESC";
         return em.createQuery(jpql, Object[].class )
+                .getResultList();
+
+    }
+    public List<RelatorioDeVendasVo> relatorioDeVendasVo(){
+        String jpql = "SELECT new br.com.matheus.loja.vo.RelatorioDeVendasVo(" +
+                "produto.nome, " +
+                "SUM(item.quantidade), " +
+                "MAX(pedido.date)) " +
+                "FROM Pedido pedido " +
+                "JOIN pedido.itens item " +
+                "JOIN item.produto produto " +
+                "GROUP BY produto.nome " +
+                "ORDER BY item.quantidade DESC";
+        return em.createQuery(jpql, RelatorioDeVendasVo.class )
                 .getResultList();
 
     }
