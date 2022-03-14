@@ -5,8 +5,6 @@ import br.com.matheus.loja.modelo.Produto;
 import br.com.matheus.loja.util.JPAUtil;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
 
 public class CadastroDeProduto {
