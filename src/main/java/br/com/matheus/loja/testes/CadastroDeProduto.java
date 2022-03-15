@@ -43,6 +43,8 @@ public class CadastroDeProduto {
         produtoDao.cadastrar(celular);
 
         em.getTransaction().commit();
+//        Categoria categoria = em.find(Categoria.class, new Categoria("CELULARES", 'xpto'));
+
         em.close();
     }
 }
