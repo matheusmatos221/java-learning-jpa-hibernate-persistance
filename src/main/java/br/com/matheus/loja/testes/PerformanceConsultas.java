@@ -16,7 +16,10 @@ public class PerformanceConsultas {
         EntityManager em = JPAUtil.getEntityManager();
 
         Pedido pedido = em.find(Pedido.class, 1L);
-        System.out.println(pedido.getItens().size());
+//        System.out.println(pedido.getItens().size());
+        em.close();
+//        System.out.println(pedido.getCliente().getNome());
+        System.out.println(pedido.getDate());
 
     }
 
