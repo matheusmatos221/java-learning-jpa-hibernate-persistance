@@ -19,13 +19,6 @@ public class PerformanceConsultas {
         em.close();
         System.out.println(pedido.getCliente().getNome());
 
-        // Precisa do JOIN FETCH para trazer as informações após o fechamento da EntityManager (EM)
-//        Pedido pedido = em.find(Pedido.class, 1L);
-//        em.close();
-//        System.out.println(pedido.getItens().size());
-//        System.out.println(pedido.getCliente().getNome());
-//        System.out.println(pedido.getDate());
-
     }
 
     private static void popularBancoDeDados() {
